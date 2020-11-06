@@ -1,0 +1,27 @@
+{
+  "name": "wata-portfolio.github.io",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wataru-kodama/wata-portfolio.github.io.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wataru-kodama/wata-portfolio.github.io/issues"
+  },
+  "homepage": "https://github.com/wataru-kodama/wata-portfolio.github.io#readme",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-imagemin": "^7.1.0",
+    "gulp-sass": "^4.1.0",
+    "imagemin-mozjpeg": "^9.0.0",
+    "postcss-cssnext": "^3.1.0"
+  }
+}
