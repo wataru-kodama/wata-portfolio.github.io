@@ -20,6 +20,11 @@ const style = () => {
     .pipe(dest(path.build + '/css'))
 }
 
+const script = () => {
+  return src(path.src + '/js/*.js')
+    .pipe(dest(path.build + '/js'))
+}
+
 const images = () => {
   return src(path.src + '/images/*')
     .pipe(imagemin())
@@ -29,7 +34,8 @@ const images = () => {
 const watcher = () => {
   watch(path.src + '/*.html', html)
   watch(path.src + '/sass/**/*.sass', style)
+  watch(path.src + '/js/**/*.js', script)
   watch(path.src + '/images/*', images)
 }
 
-exports.default = series(parallel(html,style,images), watcher)
+exports.default = series(parallel(html,style,script,images), watcher)

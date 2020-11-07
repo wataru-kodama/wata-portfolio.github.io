@@ -1,0 +1,432 @@
+@mixin m-mq($width: 700px)
+  @media screen and (min-width: $width)
+    @content;
+  
+html
+  font-size: 62.5%
+
+  body
+    background: url(../images/white_bg.jpg) left top no-repeat
+    background-attachment: fixed
+    color: #666
+    font-size: 1.6rem
+
+    li
+      list-style: none
+
+    a
+      color: #666
+      text-decoration: none
+
+    img
+      height: auto
+      width: 100%
+
+    .pc
+      display: none
+
+// header
+.header
+  display: flex
+  justify-content: flex-end
+  left: 20px
+  position: absolute
+  right: 20px
+  top: 20px
+
+  .hamburger-menu
+    height: 20px
+    position: relative
+    width: 26px
+    z-index: 100
+
+    span
+      background: #444
+      display: block
+      height: 2px
+      left: 0
+      position: absolute
+      right: 0
+      &:first-of-type
+        top: 0
+      &:nth-of-type(2)
+        top: 9px
+      &:last-of-type
+        bottom: 0
+    
+    // closebtn
+    .close-btn
+      span
+        background: #fff
+        transition: all .2s linear
+        &:first-of-type
+          top: 10px
+          transform: rotate(45deg)
+        &:nth-of-type(2)
+          opacity: 0
+        &:last-of-type
+          top: 10px
+          transform: rotate(-45deg)
+
+  .header-inner
+    background: rgba(0, 0, 0, .8)
+    bottom: 0
+    left: 0
+    padding: 100px 0 0
+    position: fixed
+    right: 0
+    top: 0
+
+    .header-logo
+      margin: 0 auto 40px
+      max-width: 130px
+
+    .global-nav
+      margin: 0 auto
+      width: 60%
+
+      li
+        border-bottom: 1px solid #eee
+        padding: 0 0 10px
+        &:not(:last-of-type)
+          margin: 0 0 40px
+        a
+          color: #ffffff
+          font-size: 1.4rem
+// main hero
+.hero-wrap
+  height: 100vh
+  max-height: 1012px
+  overflow: hidden
+  padding: 30px 0 0 30px
+  position: relative
+  &::after
+    background: #fafafa
+    bottom: 10vh
+    box-shadow: 0px 0 5px #eee
+    content: ''
+    display: block
+    height: 30vh
+    position: absolute
+    right: 0
+    width: 200px
+    z-index: -1
+
+  .hero
+    background: url(../images/sp_hero.png) 70% bottom no-repeat
+    background-size: cover
+    height: 70vh
+    width: 80%
+    filter: saturate(0.4)
+
+  .hero-heading
+    left: 40px
+    position: absolute
+    top: 10vh
+
+    .page-title
+      font-size: 2rem
+
+    .secondary-title
+      font-size: 1.2rem
+
+  .page-hero_scroll
+    bottom: 2%
+    left: 50%
+    position: absolute
+    height: 150px
+    width: 50px
+
+    .scroll-text
+      color: #aaa
+      display: inline-block
+      left: 0
+      position: absolute
+      top: 16px
+      transform: rotate(90deg)
+    
+    .scroll-line
+      animation: pagescroll 3s ease-in .5s infinite alternate forwards running
+      background: #aaa
+      bottom: 90px
+      display: block
+      left: 15px
+      position: absolute
+      top: 50px
+      width: 1px
+      @keyframes pagescroll
+        0%
+          bottom: 90px
+        100%
+          bottom: 0
+// common
+.section-wrap
+  padding: 0 20px
+
+.l-section
+  padding: 50px 0
+
+  .section-title
+    font-size: 4rem
+    font-weight: normal
+    letter-spacing: .1rem
+    margin: 0 0 100px
+// profile
+.bg-section
+  position: relative
+  &::after
+    background: #fafafa
+    bottom: -200px
+    box-shadow: 0px 0 5px #eee
+    content: ''
+    display: block
+    height: 800px
+    left: 0
+    position: absolute
+    width: 40%
+    z-index: -1
+.l-profile
+  .profile-wrap
+    max-width: 470px
+    margin: 0 auto
+    .profile-head
+      margin: 0 0 50px
+      .profile-table
+        display: flex
+        flex-wrap: wrap
+        font-size: 1.4rem
+        margin: 0 0 40px
+
+        dt, dd
+          border-bottom: 1px solid #ddd
+          padding: 0 0 10px
+          &:not(:last-of-type)
+            margin: 0 0 30px
+
+        dt
+          width: 30%
+
+        dd
+          width: 70%
+      
+      .accounts-title
+        margin: 0 0 20px
+      
+      .accounts-kind
+        display: flex
+        font-size: 1.4rem
+        li
+          &:not(:last-of-type)
+            margin: 0 50px 0 0
+    
+    .profile-foot
+      figure
+        margin: 0 0 40px
+// skill
+.skill-wrap
+  .skill-kind
+    margin: 0 auto 80px
+    position: relative
+    width: 90%
+    
+    .skill-bar_wrap
+      margin: 0 0 10px
+      max-width: 550px
+      padding: 0 0 0 10px
+      width: 100%
+      @include m-mq
+        margin: 0 auto 10px
+      
+      h4
+        font-size: 1.4rem
+        font-weight: normal
+
+      .skill-bar_box
+        border: 1px solid #ddd
+        border-radius: 6px
+        box-sizing: border-box
+        color: #fff
+        height: 30px
+        position: relative
+        @include m-mq
+        height: 34px
+
+        .skill-bar_num,
+        .skill-bar
+          position: absolute
+          top: 0
+
+        .skill-bar_num
+          font-size: 2.2rem
+          left: 10%
+          line-height: 34px
+          z-index: 1
+        
+        .skill-bar
+          background: #ddd
+          border-radius: 4px
+          height: 100%
+          transition: width 1.5s ease-in-out
+          width: 10%
+
+    .skill-divider
+      background: #ddd
+      bottom: 0
+      left: 0
+      position: absolute
+      top: 0
+      width: 4px
+      @include m-mq
+        left: calc( 50% -  280px)
+  
+  .skill-career_wrap
+    .skill-nav
+      display: flex
+      justify-content: space-around
+      margin: 0 0 50px
+
+      li
+        align-items: center
+        display: flex
+        font-size: 1.4rem
+        justify-content: center
+        padding: 10px 0
+        position: relative
+        width: 48%
+        &::before
+          background: #999
+          bottom: 0
+          content: ''
+          position: absolute
+          right: 0
+          top: 40%
+          width: 1px
+        &::after
+          background: #999
+          bottom: 0
+          content: ''
+          height: 1px
+          left: 10%
+          position: absolute
+          right: 0
+
+    .skill-career
+      max-width: 500px
+      margin: 0 auto
+      .skill-timeline
+        margin: 0 auto
+        padding: 40px 0 0
+        position: relative
+        width: 90%
+        &::before
+          background: #ddd
+          bottom: 0
+          content: ''
+          left: calc(28% - 6px)
+          position: absolute
+          right: auto
+          top: 0
+          width: 2px
+          z-index: -1
+
+        .skill-timeline_item
+          align-items: center
+          display: flex
+          font-size: 1.4rem
+          justify-content: space-between
+          margin: 0 0 70px
+
+          .timeline-item_date
+            width: calc(26% - 10px)
+          
+          .timeline-item_divider
+            width: 20px
+
+            span
+              display: block
+              border-radius: 50%
+              background: #000
+              height: 10px
+              width: 10px
+          
+          .timeline-item_body
+            position: relative
+            // left: 30%
+            // opacity: 0
+            line-height: 3rem
+            transition: all 2s ease-out
+            width: calc(70% - 10px)
+
+          .slide-left
+            left: 0
+            opacity: 1
+// hoby
+.hoby-wrap
+  margin: 0 auto
+  overflow: hidden
+  width: 80%
+
+  .hoby-list
+    .hoby-list_item
+      margin: 0 30px
+      width: 200px !important
+
+      .hoby-list_icon,
+      h4
+        text-align: center
+        margin: 0 0 40px
+
+      .hoby-list_icon
+        i
+          font-size: 6rem
+      
+      p
+        font-size: 1.2rem
+        line-height: 2.4rem
+// contact
+.contact-inner
+  display: flex
+  justify-content: space-between
+  margin: 0 auto
+  width: 90%
+
+  .contact-sns_kind
+    width: 40%
+    li
+      &:not(:last-of-type)
+        margin: 0 0 10px
+      
+      a
+        align-items: center
+        display: flex
+        font-size: 1.4rem
+  
+  .contact-address_wrap
+    width: 56%
+
+    .contact-address
+      font-size: 1.4rem
+      margin: 0 0 10px
+
+    .contact-map
+      iframe
+        filter: grayscale(100%)
+// pagetop
+.page-top
+  bottom: 60px
+  display: none
+  right: 10px
+  position: fixed
+
+  a
+    align-items: center
+    color: #333
+    display: flex
+    font-size: 1.2rem
+
+// footer
+.footer
+  background: rgba(0, 0, 0, .5)
+  color: #fff
+  text-align: center
+  padding: 20px 0
