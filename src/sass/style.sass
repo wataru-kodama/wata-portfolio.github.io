@@ -1,7 +1,11 @@
 @mixin m-mq($width: 700px)
   @media screen and (min-width: $width)
     @content;
-  
+
+@mixin l-mq($width: 1020px)
+  @media screen and (min-width: $width)
+    @content;
+
 html
   font-size: 62.5%
 
@@ -24,6 +28,8 @@ html
 
     .pc
       display: none
+      @include l-mq
+        display: block
 
 // header
 .header
@@ -33,12 +39,24 @@ html
   position: absolute
   right: 20px
   top: 20px
+  @include l-mq
+    box-sizing: border-box
+    display: block
+    left: 0
+    max-width: 310px
+    padding: 60px 0 60px 50px
+    position: fixed
+    top: 0
+    width: 14%
+    z-index: 999
 
   .hamburger-menu
     height: 20px
     position: relative
     width: 26px
     z-index: 100
+    @include l-mq
+      display: none
 
     span
       background: #444
@@ -76,14 +94,22 @@ html
     position: fixed
     right: 0
     top: 0
+    @include l-mq
+      background: none
+      padding: 0
+      position: static
 
     .header-logo
       margin: 0 auto 40px
       max-width: 130px
+      @include l-mq
+        margin: 0 0 40px
 
     .global-nav
       margin: 0 auto
       width: 60%
+      @include l-mq
+        width: 100%
 
       li
         border-bottom: 1px solid #eee
@@ -93,6 +119,9 @@ html
         a
           color: #ffffff
           font-size: 1.4rem
+          @include l-mq
+            color: #999
+
 // main hero
 .hero-wrap
   height: 100vh
@@ -111,6 +140,10 @@ html
     right: 0
     width: 200px
     z-index: -1
+    @include l-mq
+      bottom: 6vh
+      height: 40vh
+      width: 40vh
 
   .hero
     background: url(../images/sp_hero.png) 70% bottom no-repeat
@@ -118,17 +151,36 @@ html
     height: 70vh
     width: 80%
     filter: saturate(0.4)
+    @include l-mq
+      align-items: flex-start
+      background: none
+      display: flex
+      justify-content: flex-end
+      height: auto
+      width: 100%
+    
+    video
+      width: 70%
 
   .hero-heading
     left: 40px
     position: absolute
     top: 10vh
+    @include l-mq
+      bottom: 20vh
+      left: auto
+      right: 60px
+      top: auto
 
     .page-title
       font-size: 2rem
+      @include l-mq
+        font-size: 4rem
 
     .secondary-title
       font-size: 1.2rem
+      @include l-mq
+        font-size: 1.4rem
 
   .page-hero_scroll
     bottom: 2%
@@ -162,9 +214,14 @@ html
 // common
 .section-wrap
   padding: 0 20px
+  @include l-mq
+    margin: 0 0 100px
+    padding: 0
 
 .l-section
   padding: 50px 0
+  @include l-mq
+    padding: 100px 0 100px 20%
 
   .section-title
     font-size: 4rem
@@ -185,49 +242,91 @@ html
     position: absolute
     width: 40%
     z-index: -1
+    @include l-mq
+      bottom: -400px
+      height: 1000px
+
 .l-profile
   .profile-wrap
     max-width: 470px
     margin: 0 auto
+    @include l-mq
+    max-width: initial
     .profile-head
       margin: 0 0 50px
-      .profile-table
+      @include l-mq
         display: flex
-        flex-wrap: wrap
-        font-size: 1.4rem
-        margin: 0 0 40px
+        flex-flow: row-reverse
+        justify-content: space-around
 
-        dt, dd
-          border-bottom: 1px solid #ddd
-          padding: 0 0 10px
-          &:not(:last-of-type)
-            margin: 0 0 30px
+      .profile-head_inner
+        @include l-mq
+          width: 44%
 
-        dt
-          width: 30%
+        .profile-table
+          display: flex
+          flex-wrap: wrap
+          font-size: 1.4rem
+          margin: 0 0 40px
 
-        dd
-          width: 70%
+          dt, dd
+            border-bottom: 1px solid #ddd
+            padding: 0 0 10px
+            &:not(:last-of-type)
+              margin: 0 0 30px
+
+          dt
+            width: 30%
+
+          dd
+            width: 70%
+        
+        .accounts-title
+          margin: 0 0 20px
+        
+        .accounts-kind
+          display: flex
+          font-size: 1.4rem
+          li
+            &:not(:last-of-type)
+              margin: 0 50px 0 0
       
-      .accounts-title
-        margin: 0 0 20px
-      
-      .accounts-kind
-        display: flex
-        font-size: 1.4rem
-        li
-          &:not(:last-of-type)
-            margin: 0 50px 0 0
+      .frolile-head_image
+        display: none
+        @include l-mq
+          display: block
+          width: 50%
     
     .profile-foot
+      @include l-mq
+        display: flex
+        flex-flow: row-reverse
+        width: 80%
+        justify-content: space-between
+
       figure
-        margin: 0 0 40px
+        margin: 0 auto 40px
+        max-width: 280px
+        @include l-mq
+          margin: 0
+          max-width: initial
+          width: 50%
+        
+      .profile-description
+        @include l-mq
+          width: 46%
 // skill
 .skill-wrap
+  @include l-mq
+    display: flex
+
   .skill-kind
     margin: 0 auto 80px
     position: relative
     width: 90%
+    @include l-mq
+      margin: 50px 0 0
+      width: 46%
     
     .skill-bar_wrap
       margin: 0 0 10px
@@ -236,6 +335,8 @@ html
       width: 100%
       @include m-mq
         margin: 0 auto 10px
+      @include l-mq
+        margin: 0 0 20px
       
       h4
         font-size: 1.4rem
@@ -278,17 +379,24 @@ html
       width: 4px
       @include m-mq
         left: calc( 50% -  280px)
+      @include l-mq
+        left: 0
   
   .skill-career_wrap
+    @include l-mq
+      width: 48%
     .skill-nav
       display: flex
       justify-content: space-around
-      margin: 0 0 50px
+      margin: 0 auto 50px
+      max-width: 600px
+      @include m-mq
+        margin: 0 auto
 
       li
         align-items: center
         display: flex
-        font-size: 1.4rem
+        font-size: 1.2rem
         justify-content: center
         padding: 10px 0
         position: relative
@@ -309,6 +417,8 @@ html
           left: 10%
           position: absolute
           right: 0
+        @include m-mq
+          font-size: 1.4rem
 
     .skill-career
       max-width: 500px
@@ -328,6 +438,8 @@ html
           top: 0
           width: 2px
           z-index: -1
+          @include l-mq
+            display: none
 
         .skill-timeline_item
           align-items: center
@@ -335,12 +447,29 @@ html
           font-size: 1.4rem
           justify-content: space-between
           margin: 0 0 70px
+          @include l-mq
+            display: block
+            margin: 0 0 40px
 
           .timeline-item_date
             width: calc(26% - 10px)
+            @include l-mq
+              align-items: center
+              display: flex
+              margin: 0 0 10px
+              width: auto
+              &::after
+                background: #aaa
+                content: ''
+                display: block
+                margin: 0 0 0 20px
+                height: 1px
+                width: 100px
           
           .timeline-item_divider
             width: 20px
+            @include l-mq
+              display: none
 
             span
               display: block
@@ -356,6 +485,9 @@ html
             line-height: 3rem
             transition: all 2s ease-out
             width: calc(70% - 10px)
+            @include l-mq
+              padding: 0 0 0 20px
+              width: auto
 
           .slide-left
             left: 0
@@ -365,11 +497,39 @@ html
   margin: 0 auto
   overflow: hidden
   width: 80%
+  @include l-mq
+    width: 100%
 
   .hoby-list
+    @include l-mq
+      height: 800px
+      position: relative
+
     .hoby-list_item
       margin: 0 30px
       width: 200px !important
+      @include l-mq
+        margin: 0
+        position: absolute
+        width: 26% !important
+        &:first-of-type
+          left: 0
+          top: 0
+        &:nth-of-type(2)
+          top: 70px
+          left: 30%
+        &:nth-of-type(3)
+          top: 140px
+          left: 60%
+        &:nth-of-type(4)
+          top: 400px
+          left: 0
+        &:nth-of-type(5)
+          top: 470px
+          left: 30%
+        &:last-of-type
+          top: 540px
+          left: 60%
 
       .hoby-list_icon,
       h4
@@ -389,12 +549,21 @@ html
   justify-content: space-between
   margin: 0 auto
   width: 90%
+  max-width: 600px
+  @include l-mq
+    flex-flow: column
 
   .contact-sns_kind
     width: 40%
+    @include l-mq
+      display: flex
+      margin: 0 0 50px
+      width: 100%
     li
       &:not(:last-of-type)
         margin: 0 0 10px
+        @include l-mq
+          margin: 0 40px 0 0
       
       a
         align-items: center
@@ -403,10 +572,14 @@ html
   
   .contact-address_wrap
     width: 56%
+    @include l-mq
+      width: 100%
 
     .contact-address
       font-size: 1.4rem
       margin: 0 0 10px
+      @include l-mq
+        margin: 0 0 30px
 
     .contact-map
       iframe
