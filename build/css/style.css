@@ -274,6 +274,10 @@ html body .pc { display: none; }
 
 .contact-inner .contact-address_wrap .contact-map iframe { filter: grayscale(100%); }
 
+.show-item { opacity: 0; transform: translate(0, 50px); transition: all .5s; }
+
+.fadein { opacity: 1; transform: translate(0, 0); }
+
 .page-top { bottom: 60px; display: none; right: 10px; position: fixed; }
 
 .page-top a { align-items: center; color: #333; display: flex; font-size: 1.2rem; }

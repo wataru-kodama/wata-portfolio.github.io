@@ -43,6 +43,17 @@ $(function() {
     if($window_height > $skillarea) {
       skillSet();
     }
+
+    $('.show-item').each(function(){
+      var
+        elemPos = $(this).offset().top,
+        $window_height = $(window).scrollTop();
+
+      if($window_height > elemPos - 600) {
+        console.log('a');
+        $(this).addClass('fadein')
+      }
+    });
   })
 
   var
