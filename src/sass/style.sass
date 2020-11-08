@@ -188,7 +188,7 @@ html
 
   .page-hero_scroll
     bottom: 2%
-    left: 50%
+    left: calc( 50% -  25px)
     position: absolute
     height: 150px
     width: 50px
@@ -371,8 +371,20 @@ html
           background: #ddd
           border-radius: 4px
           height: 100%
-          transition: width 1.5s ease-in-out
+          transition: width 1.5s cubic-bezier(1.000, 0.035, 0.195, 0.345)
           width: 10%
+        .html-bar
+          transition-delay: .5s
+        .css-bar
+          transition-delay: 1s
+        .js-bar
+          transition-delay: 1.5s
+        .wordpress-bar
+          transition-delay: 2s
+        .photoshop-bar
+          transition-delay: 2.5s
+        .illustrator-bar
+          transition-delay: 3s
 
     .skill-divider
       background: #ddd

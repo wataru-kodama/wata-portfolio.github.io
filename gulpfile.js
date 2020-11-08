@@ -4,12 +4,14 @@ const imagemin = require('gulp-imagemin')
 
 const path = {
   src: './src',
-  build: './build'
+  build: './build',
+  docs: './docs'
 }
 
 const html = () => {
   return src(path.src + '/*.html')
   .pipe(dest(path.build))
+  .pipe(dest(path.docs))
 }
 
 const style = () => {
@@ -18,17 +20,20 @@ const style = () => {
       outputStyle: "compact"
     }))
     .pipe(dest(path.build + '/css'))
+    .pipe(dest(path.docs + '/css'))
 }
 
 const script = () => {
   return src(path.src + '/js/*.js')
     .pipe(dest(path.build + '/js'))
+    .pipe(dest(path.docs + '/js'))
 }
 
 const images = () => {
   return src(path.src + '/images/*')
     .pipe(imagemin())
     .pipe(dest(path.build + '/images'))
+    .pipe(dest(path.docs + '/images'))
 }
 
 const watcher = () => {
