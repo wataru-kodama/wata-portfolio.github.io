@@ -16,7 +16,7 @@ html body .pc { display: none; }
 
 @media screen and (min-width: 1020px) { .header { box-sizing: border-box; display: block; left: 0; max-width: 310px; padding: 60px 0 60px 50px; position: fixed; top: 0; width: 14%; z-index: 999; } }
 
-.header .hamburger-menu { height: 20px; position: relative; width: 26px; z-index: 100; }
+.header .hamburger-menu { height: 20px; position: relative; width: 26px; z-index: 999; }
 
 @media screen and (min-width: 1020px) { .header .hamburger-menu { display: none; } }
 
@@ -28,15 +28,15 @@ html body .pc { display: none; }
 
 .header .hamburger-menu span:last-of-type { bottom: 0; }
 
-.header .hamburger-menu .close-btn span { background: #fff; transition: all .2s linear; }
+.header .close-btn span { background: #fff; transition: all .2s linear; }
 
-.header .hamburger-menu .close-btn span:first-of-type { top: 10px; transform: rotate(45deg); }
+.header .close-btn span:first-of-type { top: 10px; transform: rotate(45deg); }
 
-.header .hamburger-menu .close-btn span:nth-of-type(2) { opacity: 0; }
+.header .close-btn span:nth-of-type(2) { opacity: 0; }
 
-.header .hamburger-menu .close-btn span:last-of-type { top: 10px; transform: rotate(-45deg); }
+.header .close-btn span:last-of-type { top: 10px; transform: rotate(-45deg); }
 
-.header .header-inner { background: rgba(0, 0, 0, 0.8); bottom: 0; left: 0; padding: 100px 0 0; position: fixed; right: 0; top: 0; }
+.header .header-inner { background: rgba(0, 0, 0, 0.8); bottom: 0; left: 0; padding: 100px 0 0; position: fixed; right: 0; top: 0; z-index: 998; }
 
 @media screen and (min-width: 1020px) { .header .header-inner { background: none; padding: 0; position: static; } }
 
@@ -55,6 +55,8 @@ html body .pc { display: none; }
 .header .header-inner .global-nav li a { color: #ffffff; font-size: 1.4rem; }
 
 @media screen and (min-width: 1020px) { .header .header-inner .global-nav li a { color: #999; } }
+
+.header .header-inner .global-nav li .active { color: #000; }
 
 .hero-wrap { height: 100vh; max-height: 1012px; overflow: hidden; padding: 30px 0 0 30px; position: relative; }
 
@@ -91,11 +93,11 @@ html body .pc { display: none; }
 
 .section-wrap { padding: 0 20px; }
 
-@media screen and (min-width: 1020px) { .section-wrap { margin: 0 0 100px; padding: 0; } }
+@media screen and (min-width: 1020px) { .section-wrap { margin: 0 0 80px; padding: 0; } }
 
 .l-section { padding: 50px 0; }
 
-@media screen and (min-width: 1020px) { .l-section { padding: 100px 0 100px 20%; } }
+@media screen and (min-width: 1020px) { .l-section { padding: 80px 0 80px 20%; } }
 
 .l-section .section-title { font-size: 4rem; font-weight: normal; letter-spacing: .1rem; margin: 0 0 100px; }
 
@@ -105,7 +107,9 @@ html body .pc { display: none; }
 
 @media screen and (min-width: 1020px) { .bg-section::after { bottom: -400px; height: 1000px; } }
 
-.l-profile .profile-wrap { max-width: 470px; margin: 0 auto; max-width: initial; }
+.l-profile .profile-wrap { max-width: 470px; margin: 0 auto; }
+
+@media screen and (min-width: 1020px) { .l-profile .profile-wrap { max-width: initial; } }
 
 .l-profile .profile-wrap .profile-head { margin: 0 0 50px; }
 

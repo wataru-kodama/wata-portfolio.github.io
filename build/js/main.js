@@ -35,6 +35,16 @@ $(function() {
     }
   })
 
+  $(window).scroll(function() {
+    var
+      $skillarea = $('.skill-wrap').offset().top - 500,
+      $window_height = $(this).scrollTop();
+    
+    if($window_height > $skillarea) {
+      skillSet();
+    }
+  })
+
   var
     $window_width = $(window).width(),
     $slide_width = 1019;

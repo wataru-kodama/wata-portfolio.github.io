@@ -54,7 +54,7 @@ html
     height: 20px
     position: relative
     width: 26px
-    z-index: 100
+    z-index: 999
     @include l-mq
       display: none
 
@@ -73,18 +73,18 @@ html
         bottom: 0
     
     // closebtn
-    .close-btn
-      span
-        background: #fff
-        transition: all .2s linear
-        &:first-of-type
-          top: 10px
-          transform: rotate(45deg)
-        &:nth-of-type(2)
-          opacity: 0
-        &:last-of-type
-          top: 10px
-          transform: rotate(-45deg)
+  .close-btn
+    span
+      background: #fff
+      transition: all .2s linear
+      &:first-of-type
+        top: 10px
+        transform: rotate(45deg)
+      &:nth-of-type(2)
+        opacity: 0
+      &:last-of-type
+        top: 10px
+        transform: rotate(-45deg)
 
   .header-inner
     background: rgba(0, 0, 0, .8)
@@ -94,6 +94,7 @@ html
     position: fixed
     right: 0
     top: 0
+    z-index: 998
     @include l-mq
       background: none
       padding: 0
@@ -121,6 +122,9 @@ html
           font-size: 1.4rem
           @include l-mq
             color: #999
+
+        .active
+          color: #000
 
 // main hero
 .hero-wrap
@@ -215,13 +219,13 @@ html
 .section-wrap
   padding: 0 20px
   @include l-mq
-    margin: 0 0 100px
+    margin: 0 0 80px
     padding: 0
 
 .l-section
   padding: 50px 0
   @include l-mq
-    padding: 100px 0 100px 20%
+    padding: 80px 0 80px 20%
 
   .section-title
     font-size: 4rem
@@ -251,7 +255,7 @@ html
     max-width: 470px
     margin: 0 auto
     @include l-mq
-    max-width: initial
+      max-width: initial
     .profile-head
       margin: 0 0 50px
       @include l-mq
