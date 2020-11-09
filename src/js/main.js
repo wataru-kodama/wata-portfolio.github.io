@@ -38,7 +38,10 @@ $(function() {
   $(window).scroll(function() {
     var
       $skillarea = $('.skill-wrap').offset().top - 500,
-      $window_height = $(this).scrollTop();
+      $window_height = $(this).scrollTop(),
+      $hoby_height = $('.l-hoby').offset().top - 250,
+      $window_width = $(window).width(),
+      $slide_width = 1019;
     
     if($window_height > $skillarea) {
       skillSet();
@@ -50,10 +53,13 @@ $(function() {
         $window_height = $(window).scrollTop();
 
       if($window_height > elemPos - 600) {
-        console.log('a');
         $(this).addClass('fadein')
       }
     });
+
+    if($window_height > $hoby_height && $window_width > $slide_width) {
+      $('.hoby-list_item').addClass('slide-down');
+    }
   })
 
   var
