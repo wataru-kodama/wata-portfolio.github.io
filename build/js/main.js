@@ -73,6 +73,15 @@ $(function() {
     })
   }
 
+  var $skill_nav = $('.skill-nav_item');
+  $skill_nav.on('click', function() {
+    $('.target-skill').removeClass('target-skill');
+    $(this).addClass('target-skill');
+
+    var $skill_index = $skill_nav.index(this);
+    $('.career-inner').removeClass('skill-show').eq($skill_index).addClass('skill-show');
+  })
+
   scrollMenu();
 
   function skillSet() {

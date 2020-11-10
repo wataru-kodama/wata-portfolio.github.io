@@ -36,7 +36,7 @@ html body .pc { display: none; }
 
 .header .close-btn span:last-of-type { top: 10px; transform: rotate(-45deg); }
 
-.header .header-inner { background: rgba(0, 0, 0, 0.8); bottom: 0; left: 0; padding: 100px 0 0; position: fixed; right: 0; top: 0; z-index: 998; }
+.header .header-inner { background: rgba(0, 0, 0, 0.9); bottom: 0; left: 0; padding: 100px 0 0; position: fixed; right: 0; top: 0; z-index: 998; }
 
 @media screen and (min-width: 1020px) { .header .header-inner { background: none; padding: 0; position: static; } }
 
@@ -48,15 +48,19 @@ html body .pc { display: none; }
 
 @media screen and (min-width: 1020px) { .header .header-inner .global-nav { width: 100%; } }
 
-.header .header-inner .global-nav li { border-bottom: 1px solid #eee; padding: 0 0 10px; }
+.header .header-inner .global-nav li { padding: 0 0 10px; }
+
+@media screen and (min-width: 1020px) { .header .header-inner .global-nav li { border-bottom: 1px solid #eee; } }
 
 .header .header-inner .global-nav li:not(:last-of-type) { margin: 0 0 40px; }
 
-.header .header-inner .global-nav li a { color: #ffffff; font-size: 1.4rem; }
+.header .header-inner .global-nav li a { color: #888; font-size: 1.4rem; }
 
 @media screen and (min-width: 1020px) { .header .header-inner .global-nav li a { color: #999; } }
 
-.header .header-inner .global-nav li .active { color: #000; }
+.header .header-inner .global-nav li .active { color: #fff; }
+
+@media screen and (min-width: 1020px) { .header .header-inner .global-nav li .active { color: #000; } }
 
 .page-wrap { align-items: center; background: #444; bottom: 0; display: flex; justify-content: center; position: fixed; left: 0; right: 0; top: 0; z-index: 999; font-family: 'Playfair Display', serif; }
 
@@ -195,44 +199,54 @@ html body .pc { display: none; }
 
 .skill-wrap .skill-career_wrap .skill-nav { display: flex; justify-content: space-around; margin: 0 auto 50px; max-width: 600px; }
 
-@media screen and (min-width: 700px) { .skill-wrap .skill-career_wrap .skill-nav { margin: 0 auto; } }
+.skill-wrap .skill-career_wrap .skill-nav li { align-items: center; color: #ccc; display: flex; font-size: 1.2rem; justify-content: center; padding: 10px 0; position: relative; transition: all .5s ease-out; width: 44%; }
 
-.skill-wrap .skill-career_wrap .skill-nav li { align-items: center; display: flex; font-size: 1.2rem; justify-content: center; padding: 10px 0; position: relative; width: 48%; }
+.skill-wrap .skill-career_wrap .skill-nav li::before { background: #ddd; bottom: 0; content: ''; position: absolute; right: 0; transition: all .5s ease-out; top: 50%; width: 1px; }
 
-.skill-wrap .skill-career_wrap .skill-nav li::before { background: #999; bottom: 0; content: ''; position: absolute; right: 0; top: 40%; width: 1px; }
-
-.skill-wrap .skill-career_wrap .skill-nav li::after { background: #999; bottom: 0; content: ''; height: 1px; left: 10%; position: absolute; right: 0; }
+.skill-wrap .skill-career_wrap .skill-nav li::after { background: #ddd; bottom: 0; content: ''; height: 1px; left: 70%; position: absolute; right: 0; transition: all .5s ease-out; }
 
 @media screen and (min-width: 700px) { .skill-wrap .skill-career_wrap .skill-nav li { font-size: 1.4rem; } }
 
-.skill-wrap .skill-career_wrap .skill-career { max-width: 500px; margin: 0 auto; }
+@media screen and (min-width: 1020px) { .skill-wrap .skill-career_wrap .skill-nav li { cursor: pointer; }
+  .skill-wrap .skill-career_wrap .skill-nav li:hover::after { left: 40%; } }
 
-.skill-wrap .skill-career_wrap .skill-career .skill-timeline { margin: 0 auto; padding: 40px 0 0; position: relative; width: 90%; }
+.skill-wrap .skill-career_wrap .skill-nav .target-skill { color: #444; }
 
-.skill-wrap .skill-career_wrap .skill-career .skill-timeline::before { background: #ddd; bottom: 0; content: ''; left: calc(28% - 6px); position: absolute; right: auto; top: 0; width: 2px; z-index: -1; }
+.skill-wrap .skill-career_wrap .skill-nav .target-skill::before { background: #444; top: 20%; }
 
-@media screen and (min-width: 1020px) { .skill-wrap .skill-career_wrap .skill-career .skill-timeline::before { display: none; } }
+.skill-wrap .skill-career_wrap .skill-nav .target-skill::after { background: #444; left: 20%; }
 
-.skill-wrap .skill-career_wrap .skill-career .skill-timeline .skill-timeline_item { align-items: center; display: flex; font-size: 1.4rem; justify-content: space-between; margin: 0 0 70px; }
+.skill-wrap .skill-career_wrap .skill-career { max-width: 500px; margin: 0 auto; height: 500px; position: relative; }
 
-@media screen and (min-width: 1020px) { .skill-wrap .skill-career_wrap .skill-career .skill-timeline .skill-timeline_item { display: block; margin: 0 0 40px; } }
+.skill-wrap .skill-career_wrap .skill-career .career-inner { opacity: 0; transform: translateY(100px); transition: all .5s ease-out; position: absolute; }
 
-.skill-wrap .skill-career_wrap .skill-career .skill-timeline .skill-timeline_item .timeline-item_date { width: calc(26% - 10px); }
+.skill-wrap .skill-career_wrap .skill-career .skill-timeline .timeline-table { display: flex; flex-wrap: wrap; }
 
-@media screen and (min-width: 1020px) { .skill-wrap .skill-career_wrap .skill-career .skill-timeline .skill-timeline_item .timeline-item_date { align-items: center; display: flex; margin: 0 0 10px; width: auto; }
-  .skill-wrap .skill-career_wrap .skill-career .skill-timeline .skill-timeline_item .timeline-item_date::after { background: #aaa; content: ''; display: block; margin: 0 0 0 20px; height: 1px; width: 100px; } }
+.skill-wrap .skill-career_wrap .skill-career .skill-timeline .timeline-table dt { font-size: 1.4rem; margin: 0 0 20px; position: relative; width: 100%; }
 
-.skill-wrap .skill-career_wrap .skill-career .skill-timeline .skill-timeline_item .timeline-item_divider { width: 20px; }
+.skill-wrap .skill-career_wrap .skill-career .skill-timeline .timeline-table dt::after { background: #666; bottom: 0; content: ''; left: 0; height: 1px; position: absolute; right: 50%; }
 
-@media screen and (min-width: 1020px) { .skill-wrap .skill-career_wrap .skill-career .skill-timeline .skill-timeline_item .timeline-item_divider { display: none; } }
+.skill-wrap .skill-career_wrap .skill-career .skill-timeline .timeline-table dd { font-size: 1.4rem; line-height: 2.6rem; margin: 0 0 0 20px; }
 
-.skill-wrap .skill-career_wrap .skill-career .skill-timeline .skill-timeline_item .timeline-item_divider span { display: block; border-radius: 50%; background: #000; height: 10px; width: 10px; }
+.skill-wrap .skill-career_wrap .skill-career .skill-timeline .timeline-table dd:not(:last-of-type) { margin: 0 0 40px 20px; }
 
-.skill-wrap .skill-career_wrap .skill-career .skill-timeline .skill-timeline_item .timeline-item_body { position: relative; line-height: 3rem; transition: all 2s ease-out; width: calc(70% - 10px); }
+.skill-wrap .skill-career_wrap .skill-career .skill-event .event-table { display: flex; flex-wrap: wrap; justify-content: flex-end; }
 
-@media screen and (min-width: 1020px) { .skill-wrap .skill-career_wrap .skill-career .skill-timeline .skill-timeline_item .timeline-item_body { padding: 0 0 0 20px; width: auto; } }
+.skill-wrap .skill-career_wrap .skill-career .skill-event .event-table dd { align-items: center; display: flex; font-size: 1.4rem; margin: 0 0 20px; position: relative; width: 100%; }
 
-.skill-wrap .skill-career_wrap .skill-career .skill-timeline .skill-timeline_item .slide-left { left: 0; opacity: 1; }
+.skill-wrap .skill-career_wrap .skill-career .skill-event .event-table dd::after { background: #666; bottom: 0; content: ''; display: block; height: 1px; left: 0; position: absolute; right: 50%; }
+
+.skill-wrap .skill-career_wrap .skill-career .skill-event .event-table dt { font-size: 1.4rem; min-width: 250px; width: 80%; }
+
+.skill-wrap .skill-career_wrap .skill-career .skill-event .event-table dt:not(:last-of-type) { margin: 0 0 50px; }
+
+.skill-wrap .skill-career_wrap .skill-career .skill-event .event-table dt span { display: block; text-align: right; }
+
+.skill-wrap .skill-career_wrap .skill-career .skill-show { transform: translateY(0); opacity: 1; }
+
+.l-hoby { position: relative; }
+
+.l-hoby::after { background: #fafafa; bottom: 0; box-shadow: 0px 0 5px #eee; content: ''; height: 60%; position: absolute; right: 0; width: 40%; z-index: -999; }
 
 .hoby-wrap { margin: 0 auto; overflow: hidden; width: 80%; }
 

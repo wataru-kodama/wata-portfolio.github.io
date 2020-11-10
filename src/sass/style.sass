@@ -87,7 +87,7 @@ html
         transform: rotate(-45deg)
 
   .header-inner
-    background: rgba(0, 0, 0, .8)
+    background: rgba(0, 0, 0, .9)
     bottom: 0
     left: 0
     padding: 100px 0 0
@@ -113,18 +113,21 @@ html
         width: 100%
 
       li
-        border-bottom: 1px solid #eee
         padding: 0 0 10px
+        @include l-mq
+          border-bottom: 1px solid #eee
         &:not(:last-of-type)
           margin: 0 0 40px
         a
-          color: #ffffff
+          color: #888
           font-size: 1.4rem
           @include l-mq
             color: #999
 
         .active
-          color: #000
+          color: #fff
+          @include l-mq
+            color: #000
 
 // main hero
 .page-wrap
@@ -434,109 +437,138 @@ html
       justify-content: space-around
       margin: 0 auto 50px
       max-width: 600px
-      @include m-mq
-        margin: 0 auto
 
       li
         align-items: center
+        color: #ccc
         display: flex
         font-size: 1.2rem
         justify-content: center
         padding: 10px 0
         position: relative
-        width: 48%
-        &::before
-          background: #999
-          bottom: 0
-          content: ''
-          position: absolute
-          right: 0
-          top: 40%
-          width: 1px
-        &::after
-          background: #999
-          bottom: 0
-          content: ''
-          height: 1px
-          left: 10%
-          position: absolute
-          right: 0
-        @include m-mq
-          font-size: 1.4rem
-
-    .skill-career
-      max-width: 500px
-      margin: 0 auto
-      .skill-timeline
-        margin: 0 auto
-        padding: 40px 0 0
-        position: relative
-        width: 90%
+        transition: all .5s ease-out
+        width: 44%
         &::before
           background: #ddd
           bottom: 0
           content: ''
-          left: calc(28% - 6px)
           position: absolute
-          right: auto
-          top: 0
-          width: 2px
-          z-index: -1
-          @include l-mq
-            display: none
-
-        .skill-timeline_item
-          align-items: center
-          display: flex
+          right: 0
+          transition: all .5s ease-out
+          top: 50%
+          width: 1px
+        &::after
+          background: #ddd
+          bottom: 0
+          content: ''
+          height: 1px
+          left: 70%
+          position: absolute
+          right: 0
+          transition: all .5s ease-out
+        @include m-mq
           font-size: 1.4rem
-          justify-content: space-between
-          margin: 0 0 70px
-          @include l-mq
-            display: block
-            margin: 0 0 40px
+        @include l-mq
+          cursor: pointer
+          &:hover
+            &::after
+              left: 40%
 
-          .timeline-item_date
-            width: calc(26% - 10px)
-            @include l-mq
-              align-items: center
-              display: flex
-              margin: 0 0 10px
-              width: auto
-              &::after
-                background: #aaa
-                content: ''
-                display: block
-                margin: 0 0 0 20px
-                height: 1px
-                width: 100px
-          
-          .timeline-item_divider
-            width: 20px
-            @include l-mq
-              display: none
+      .target-skill
+        color: #444
+        &::before
+          background: #444
+          top: 20%
+        &::after
+          background: #444
+          left: 20%
 
+
+    .skill-career
+      max-width: 500px
+      margin: 0 auto
+      height: 500px
+      position: relative
+
+      .career-inner
+        opacity: 0
+        transform: translateY(100px)
+        transition: all .5s ease-out
+        position: absolute
+
+      .skill-timeline
+        .timeline-table
+          display: flex
+          flex-wrap: wrap
+          dt
+            font-size: 1.4rem
+            margin: 0 0 20px
+            position: relative
+            width: 100%
+            &::after
+              background: #666
+              bottom: 0
+              content: ''
+              left: 0
+              height: 1px
+              position: absolute
+              right: 50%
+          dd
+            font-size: 1.4rem
+            line-height: 2.6rem
+            margin: 0 0 0 20px
+            &:not(:last-of-type)
+              margin: 0 0 40px 20px
+        
+      .skill-event
+        .event-table
+          display: flex
+          flex-wrap: wrap
+          justify-content: flex-end
+          dd
+            align-items: center
+            display: flex
+            font-size: 1.4rem
+            margin: 0 0 20px
+            position: relative
+            width: 100%
+            &::after
+              background: #666
+              bottom: 0
+              content: ''
+              display: block
+              height: 1px
+              left: 0
+              position: absolute
+              right: 50%
+          dt
+            font-size: 1.4rem
+            min-width: 250px
+            width: 80%
+            &:not(:last-of-type)
+              margin: 0 0 50px
             span
               display: block
-              border-radius: 50%
-              background: #000
-              height: 10px
-              width: 10px
-          
-          .timeline-item_body
-            position: relative
-            // left: 30%
-            // opacity: 0
-            line-height: 3rem
-            transition: all 2s ease-out
-            width: calc(70% - 10px)
-            @include l-mq
-              padding: 0 0 0 20px
-              width: auto
+              text-align: right
 
-          .slide-left
-            left: 0
-            opacity: 1
+      .skill-show
+        transform: translateY(0)
+        opacity: 1
 // hoby
+.l-hoby
+  @include l-mq
+  position: relative
+  &::after
+    background: #fafafa
+    bottom: 0
+    box-shadow: 0px 0 5px #eee
+    content: ''
+    height: 60%
+    position: absolute
+    right: 0
+    width: 40%
+    z-index: -999
+
 .hoby-wrap
   margin: 0 auto
   overflow: hidden
