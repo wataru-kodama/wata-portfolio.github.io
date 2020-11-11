@@ -94,7 +94,7 @@ html
     position: fixed
     right: 0
     top: 0
-    z-index: 998
+    z-index: 10
     @include l-mq
       background: none
       padding: 0
@@ -118,6 +118,7 @@ html
           border-bottom: 1px solid #eee
         &:not(:last-of-type)
           margin: 0 0 40px
+
         a
           color: #888
           font-size: 1.4rem
@@ -141,20 +142,32 @@ html
   right: 0
   top: 0
   z-index: 999
-  font-family: 'Playfair Display', serif
+
   .page-title
     color: #aaa
-    font-size: 4rem
+    font-size: 3rem
     letter-spacing: .4rem
     position: relative
+    @include l-mq
+      font-size: 4rem
     &::after
+      background: #444
       bottom: 0
       content: ''
       position: absolute
-      top: 0
       left: 0
-      background: #444
-      transition: right 1.5s cubic-bezier(1.000, 0.035, 0.195, 0.345)
+      right: 450px
+      top: 0
+
+.page-wrap_hide
+    transition: all 0.5s cubic-bezier(0.79, 0.155, 0.025, 0.81) 2.5s
+    opacity: 0
+    z-index: -999
+
+    .page-title
+      &::after
+        right: 0
+        transition: all 1.8s cubic-bezier(0.895, 0.17, 0.395, 0.81) 0s
 
 .hero-wrap
   height: 100vh
@@ -257,12 +270,27 @@ html
   @include l-mq
     padding: 80px 0 80px 20%
 
+
   .section-title
     font-family: 'Playfair Display', serif
     font-size: 4rem
     font-weight: normal
     letter-spacing: .4rem
+    padding: 0 0 14px
+    position: relative
     margin: 0 0 100px
+    &::after
+      background: #ddd
+      bottom: 0
+      content: ''
+      left: 0
+      max-width: 700px
+      position: absolute
+      height: 2px
+      width: 80%
+    @include l-mq
+      font-size: 5rem
+
 // profile
 .bg-section
   position: relative
@@ -287,6 +315,7 @@ html
     margin: 0 auto
     @include l-mq
       max-width: initial
+
     .profile-head
       margin: 0 0 50px
       @include l-mq
@@ -322,6 +351,7 @@ html
         .accounts-kind
           display: flex
           font-size: 1.4rem
+
           li
             &:not(:last-of-type)
               margin: 0 50px 0 0
@@ -350,10 +380,28 @@ html
       .profile-description
         @include l-mq
           width: 46%
+        .profile-description_title
+          margin: 0 0 20px
+          padding: 0 0 8px
+          position: relative
+          &::after
+            background: #aaa
+            bottom: 0
+            content: ''
+            left: 0
+            height: 2px
+            position: absolute
+            width: 200px
+
+
+        .profile-description_text
+          font-size: 1.4rem
+          line-height: 3rem
 // skill
 .skill-wrap
   @include l-mq
     display: flex
+    justify-content: space-around
 
   .skill-kind
     margin: 0 auto 80px
@@ -427,11 +475,13 @@ html
       @include m-mq
         left: calc( 50% -  280px)
       @include l-mq
+        bottom: 16%
         left: 0
   
   .skill-career_wrap
     @include l-mq
       width: 48%
+
     .skill-nav
       display: flex
       justify-content: space-around
@@ -489,6 +539,9 @@ html
       margin: 0 auto
       height: 500px
       position: relative
+      @include l-mq
+        max-width: initial
+        width: 84%
 
       .career-inner
         opacity: 0
@@ -684,7 +737,7 @@ html
   transform: translate(0, 0)
 
 .page-top
-  bottom: 60px
+  bottom: 70px
   display: none
   right: 10px
   position: fixed

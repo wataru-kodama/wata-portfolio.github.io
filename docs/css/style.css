@@ -36,7 +36,7 @@ html body .pc { display: none; }
 
 .header .close-btn span:last-of-type { top: 10px; transform: rotate(-45deg); }
 
-.header .header-inner { background: rgba(0, 0, 0, 0.9); bottom: 0; left: 0; padding: 100px 0 0; position: fixed; right: 0; top: 0; z-index: 998; }
+.header .header-inner { background: rgba(0, 0, 0, 0.9); bottom: 0; left: 0; padding: 100px 0 0; position: fixed; right: 0; top: 0; z-index: 10; }
 
 @media screen and (min-width: 1020px) { .header .header-inner { background: none; padding: 0; position: static; } }
 
@@ -62,11 +62,17 @@ html body .pc { display: none; }
 
 @media screen and (min-width: 1020px) { .header .header-inner .global-nav li .active { color: #000; } }
 
-.page-wrap { align-items: center; background: #444; bottom: 0; display: flex; justify-content: center; position: fixed; left: 0; right: 0; top: 0; z-index: 999; font-family: 'Playfair Display', serif; }
+.page-wrap { align-items: center; background: #444; bottom: 0; display: flex; justify-content: center; position: fixed; left: 0; right: 0; top: 0; z-index: 999; }
 
-.page-wrap .page-title { color: #aaa; font-size: 4rem; letter-spacing: .4rem; position: relative; }
+.page-wrap .page-title { color: #aaa; font-size: 3rem; letter-spacing: .4rem; position: relative; }
 
-.page-wrap .page-title::after { bottom: 0; content: ''; position: absolute; top: 0; left: 0; background: #444; transition: right 1.5s cubic-bezier(1, 0.035, 0.195, 0.345); }
+@media screen and (min-width: 1020px) { .page-wrap .page-title { font-size: 4rem; } }
+
+.page-wrap .page-title::after { background: #444; bottom: 0; content: ''; position: absolute; left: 0; right: 450px; top: 0; }
+
+.page-wrap_hide { transition: all 0.5s cubic-bezier(0.79, 0.155, 0.025, 0.81) 2.5s; opacity: 0; z-index: -999; }
+
+.page-wrap_hide .page-title::after { right: 0; transition: all 1.8s cubic-bezier(0.895, 0.17, 0.395, 0.81) 0s; }
 
 .hero-wrap { height: 100vh; max-height: 1012px; overflow: hidden; padding: 30px 0 0 30px; position: relative; }
 
@@ -109,7 +115,11 @@ html body .pc { display: none; }
 
 @media screen and (min-width: 1020px) { .l-section { padding: 80px 0 80px 20%; } }
 
-.l-section .section-title { font-family: 'Playfair Display', serif; font-size: 4rem; font-weight: normal; letter-spacing: .4rem; margin: 0 0 100px; }
+.l-section .section-title { font-family: 'Playfair Display', serif; font-size: 4rem; font-weight: normal; letter-spacing: .4rem; padding: 0 0 14px; position: relative; margin: 0 0 100px; }
+
+.l-section .section-title::after { background: #ddd; bottom: 0; content: ''; left: 0; max-width: 700px; position: absolute; height: 2px; width: 80%; }
+
+@media screen and (min-width: 1020px) { .l-section .section-title { font-size: 5rem; } }
 
 .bg-section { position: relative; }
 
@@ -155,7 +165,13 @@ html body .pc { display: none; }
 
 @media screen and (min-width: 1020px) { .l-profile .profile-wrap .profile-foot .profile-description { width: 46%; } }
 
-@media screen and (min-width: 1020px) { .skill-wrap { display: flex; } }
+.l-profile .profile-wrap .profile-foot .profile-description .profile-description_title { margin: 0 0 20px; padding: 0 0 8px; position: relative; }
+
+.l-profile .profile-wrap .profile-foot .profile-description .profile-description_title::after { background: #aaa; bottom: 0; content: ''; left: 0; height: 2px; position: absolute; width: 200px; }
+
+.l-profile .profile-wrap .profile-foot .profile-description .profile-description_text { font-size: 1.4rem; line-height: 3rem; }
+
+@media screen and (min-width: 1020px) { .skill-wrap { display: flex; justify-content: space-around; } }
 
 .skill-wrap .skill-kind { margin: 0 auto 80px; position: relative; width: 90%; }
 
@@ -193,7 +209,7 @@ html body .pc { display: none; }
 
 @media screen and (min-width: 700px) { .skill-wrap .skill-kind .skill-divider { left: calc( 50% -  280px); } }
 
-@media screen and (min-width: 1020px) { .skill-wrap .skill-kind .skill-divider { left: 0; } }
+@media screen and (min-width: 1020px) { .skill-wrap .skill-kind .skill-divider { bottom: 16%; left: 0; } }
 
 @media screen and (min-width: 1020px) { .skill-wrap .skill-career_wrap { width: 48%; } }
 
@@ -217,6 +233,8 @@ html body .pc { display: none; }
 .skill-wrap .skill-career_wrap .skill-nav .target-skill::after { background: #444; left: 20%; }
 
 .skill-wrap .skill-career_wrap .skill-career { max-width: 500px; margin: 0 auto; height: 500px; position: relative; }
+
+@media screen and (min-width: 1020px) { .skill-wrap .skill-career_wrap .skill-career { max-width: initial; width: 84%; } }
 
 .skill-wrap .skill-career_wrap .skill-career .career-inner { opacity: 0; transform: translateY(100px); transition: all .5s ease-out; position: absolute; }
 
@@ -300,7 +318,7 @@ html body .pc { display: none; }
 
 .fadein { opacity: 1; transform: translate(0, 0); }
 
-.page-top { bottom: 60px; display: none; right: 10px; position: fixed; }
+.page-top { bottom: 70px; display: none; right: 10px; position: fixed; }
 
 .page-top a { align-items: center; color: #333; display: flex; font-size: 1.2rem; }
 

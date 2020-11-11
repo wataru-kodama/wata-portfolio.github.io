@@ -1,5 +1,7 @@
 $(function() {
   'use strict';
+  $('.page-wrap').addClass('page-wrap_hide');
+
   $('a[href^="#"]').click(function() {
     var
       $href = $(this).attr("href"),
@@ -41,10 +43,18 @@ $(function() {
       $window_height = $(this).scrollTop(),
       $hoby_height = $('.l-hoby').offset().top - 250,
       $window_width = $(window).width(),
-      $slide_width = 1019;
+      $slide_width = 1019,
+      $target_top = 300,
+      $top_btn = $('#page-top');
     
     if($window_height > $skillarea) {
       skillSet();
+    }
+
+    if($window_height > $target_top) {
+      $top_btn.fadeIn();
+    }else {
+      $top_btn.fadeOut();
     }
 
     $('.show-item').each(function(){
@@ -60,6 +70,11 @@ $(function() {
     if($window_height > $hoby_height && $window_width > $slide_width) {
       $('.hoby-list_item').addClass('slide-down');
     }
+  })
+
+  $('#page-top').on('click', function() {
+    $('html, body').animate({scrollTop: 0}, 500);
+    return false;
   })
 
   var
