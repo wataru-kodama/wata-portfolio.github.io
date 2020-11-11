@@ -2,6 +2,7 @@ $(function() {
   'use strict';
   $('.page-wrap').addClass('page-wrap_hide');
 
+  // グローバルナビの挙動
   $('a[href^="#"]').click(function() {
     var
       $href = $(this).attr("href"),
@@ -12,6 +13,7 @@ $(function() {
     return false;
   });
 
+  // ハンバーガーメニュー
   $('#hamburger-menu').on('click', function() {
     var
       $target_btn = $(this),
@@ -72,6 +74,7 @@ $(function() {
     }
   })
 
+  // ページトップ
   $('#page-top').on('click', function() {
     $('html, body').animate({scrollTop: 0}, 500);
     return false;
@@ -88,6 +91,7 @@ $(function() {
     })
   }
 
+  // スキルの挙動
   var $skill_nav = $('.skill-nav_item');
   $skill_nav.on('click', function() {
     $('.target-skill').removeClass('target-skill');
@@ -106,6 +110,7 @@ $(function() {
     })
   }
 
+  // スクロールに応じてグローバルメニューの挙動
   function scrollMenu() {
     var array = {
       '#top': 0,
