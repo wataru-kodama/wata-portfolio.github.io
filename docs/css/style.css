@@ -215,7 +215,7 @@ html body .pc { display: none; }
 
 .skill-wrap .skill-career_wrap .skill-nav { display: flex; justify-content: space-around; margin: 0 auto 50px; max-width: 600px; }
 
-.skill-wrap .skill-career_wrap .skill-nav li { align-items: center; color: #ccc; display: flex; font-size: 1.2rem; justify-content: center; padding: 10px 0; position: relative; transition: all .5s ease-out; width: 44%; }
+.skill-wrap .skill-career_wrap .skill-nav li { align-items: center; color: #aaa; display: flex; font-size: 1.2rem; justify-content: center; padding: 10px 0; position: relative; transition: all .5s ease-out; width: 44%; }
 
 .skill-wrap .skill-career_wrap .skill-nav li::before { background: #ddd; bottom: 0; content: ''; position: absolute; right: 0; transition: all .5s ease-out; top: 50%; width: 1px; }
 
