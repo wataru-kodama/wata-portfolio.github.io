@@ -4,7 +4,7 @@ $(function() {
 
   // グローバルナビの挙動
   $('a[href^="#"]').click(function() {
-    var
+    let
       $href = $(this).attr("href"),
       $target = $($href == "#" || $href == "" ? 'html' : $href),
       $position = $target.offset().top;
@@ -15,39 +15,43 @@ $(function() {
 
   // ハンバーガーメニュー
   $('#hamburger-menu').on('click', function() {
-    var
-      $target_btn = $(this),
+    const
+      $targetBtn = $(this),
       $header = $('.header-inner');
 
-    if($target_btn.hasClass('close-btn')) {
+    if($targetBtn.hasClass('close-btn')) {
       $header.not(':animated').fadeOut('slow', function() {
-        $target_btn.removeClass('close-btn');
-        $target_btn.css('position', 'relative');
+        $targetBtn.removeClass('close-btn');
+        $targetBtn.css('position', 'relative');
       })
     }else {
       $header.not(':animated').fadeIn('slow', function() {
-        $target_btn.addClass('close-btn');
-        $target_btn.css('position', 'fixed');
+        $targetBtn.addClass('close-btn');
+        $targetBtn.css('position', 'fixed');
       })
-      var $header_link = $header.find('a');
-      $header_link.on('click', function() {
+
+      let $headerLink = $header.find('a');
+
+      $headerLink.on('click', function() {
         $header.not(':animated').fadeOut('slow', function() {
-          $target_btn.removeClass('close-btn');
-          $target_btn.css('position', 'relative');
+          $targetBtn.removeClass('close-btn');
+          $targetBtn.css('position', 'relative');
         })
       })
     }
   })
 
   $(window).scroll(function() {
-    var
-      $skillarea = $('.skill-wrap').offset().top - 500,
-      $window_height = $(this).scrollTop(),
-      $hoby_height = $('.l-hoby').offset().top - 250,
-      $window_width = $(window).width(),
+    const
       $slide_width = 1019,
       $target_top = 300,
       $top_btn = $('#page-top');
+
+    let
+      $skillarea = $('.skill-wrap').offset().top - 500,
+      $hoby_height = $('.l-hoby').offset().top - 250,
+      $window_width = $(window).width(),
+      $window_height = $(this).scrollTop();
     
     if($window_height > $skillarea) {
       skillSet();
@@ -60,7 +64,7 @@ $(function() {
     }
 
     $('.show-item').each(function(){
-      var
+      let
         elemPos = $(this).offset().top,
         $window_height = $(window).scrollTop();
 
@@ -80,9 +84,10 @@ $(function() {
     return false;
   })
 
-  var
+  let
     $window_width = $(window).width(),
     $slide_width = 1019;
+
   if($window_width < $slide_width) {
     $('.hoby-list').bxSlider({
       pager: false,
@@ -92,27 +97,27 @@ $(function() {
   }
 
   // スキルの挙動
-  var $skill_nav = $('.skill-nav_item');
-  $skill_nav.on('click', function() {
+  const $skillNav = $('.skill-nav_item');
+  $skillNav.on('click', function() {
     $('.target-skill').removeClass('target-skill');
     $(this).addClass('target-skill');
 
-    var $skill_index = $skill_nav.index(this);
-    $('.career-inner').removeClass('skill-show').eq($skill_index).addClass('skill-show');
+    let $skillIndex = $skillNav.index(this);
+    $('.career-inner').removeClass('skill-show').eq($skillIndex).addClass('skill-show');
   })
 
   scrollMenu();
 
   function skillSet() {
     $('.skill-bar').each(function() {
-      var total = $(this).data("total");
+      let total = $(this).data("total");
       $(this).css("width", total + "%");
     })
   }
 
   // スクロールに応じてグローバルメニューの挙動
   function scrollMenu() {
-    var array = {
+    let array = {
       '#top': 0,
       '#profile': 0,
       '#skill': 0,
@@ -120,9 +125,9 @@ $(function() {
       '#contact': 0
     };
 
-    var $globalNave = new Array();
+    let $globalNave = new Array();
 
-    for(var key in array) {
+    for(let key in array) {
       if($(key).offset()) {
         array[key] = $(key).offset().top - 10;
         $globalNave[key] = $('#global-nav li a[href="'+ key +'"]');
@@ -130,7 +135,7 @@ $(function() {
     }
 
     $(window).scroll(function() {
-      for(var key in array) {
+      for(let key in array) {
         if($(window).scrollTop() > array[key] - 500) {
           $('#global-nav li a').each(function() {
             $(this).removeClass('active');
